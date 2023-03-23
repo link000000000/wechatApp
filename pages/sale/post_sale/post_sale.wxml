@@ -1,0 +1,56 @@
+<view class="post-sale-container">
+  <view class='post-container'>
+    <view class='post-header'>
+
+    <view class='right'>
+      <!-- <view class='user-name right-item'>
+        <picker bindchange="bindPickerChange" 
+                value="{{gender}}" 
+                range="{{array}}">
+                <view>
+                  <input placeholder="性别" 
+                          class='right-item' 
+                          value="{{gender}}"
+                          placeholder-style="color:darkgray"/>  
+                </view>
+        </picker>
+      </view>
+      <view class='user-name'>
+        <input placeholder="专业" 
+               bindinput='getMajor'
+               class='right-item' 
+               placeholder-style="color:darkgray"/>
+      </view> -->
+    </view>
+  </view>
+  <view class='post-content'>
+    <textarea placeholder="喜欢怎样的ta呢..." class='like' bindinput="getLike"/>
+    <textarea placeholder="介绍一下舍友吧" 
+                class='introduce'
+                maxlength="1024" 
+                bindinput='getContent'/>
+  </view>
+  <view class='image-form'>
+      <upload icon-info="{{icon}}" 
+              qiniu-info="{{qiniu}}"  
+              bind:success="uploadSuccess" 
+              bind:delete="deleteSuccess"
+              bind:error="uploadError"/>
+    </view>  
+  </view>
+  <view class='post-content'>
+    <input placeholder="舍友姓名" 
+               bindinput='getName' 
+               class='right-item' 
+               placeholder-style="color:darkgray"/>
+  </view>
+  <view class="gender">
+    <image class='{{gender==1?"right-gender-border":"left-gender-border"}}' src="/image/v2/left-border.png"></image>
+    <view bindtap="selectGender" class='boy {{gender==1?"select-gender":"not-select-gender"}}' data-gender="1"><view>男生</view></view>
+    <view bindtap="selectGender" class='girl {{gender==2?"select-gender":"not-select-gender"}}' data-gender="2"><view>女生</view></view>
+  </view>
+</view>
+
+  <view class='button-container'>
+    <view bindtap='post' class="button"> 卖舍友 </view>
+  </view>

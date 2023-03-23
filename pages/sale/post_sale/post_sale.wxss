@@ -1,0 +1,207 @@
+page{
+  background-color: #ffffff;
+}
+
+.post-sale-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.post-sale-container .post-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 10rpx;
+}
+
+.post-sale-container .post-header{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+}
+
+.image-form{
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+}
+
+.post-header .left{
+  width: 40%;
+  height: 300rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.left .remove-image{
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  z-index: 10;
+  margin-left: -50rpx;
+}
+
+.post-header .right{
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+}
+
+input{
+  border-bottom-style:solid;
+  border-width:1rpx;
+  border-color: #E8E8E8;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+}
+
+ .gender{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-top: 80rpx;
+  justify-content: space-around;
+  font-size: 28rpx;
+  font-family: SF Pro Text, SF Pro Text-Regular;
+  font-weight: 400;
+  text-align: CENTER;
+  color: #303030;
+  line-height: 28rpx;
+  position: relative;
+}
+
+.not-select-gender{
+  width: 260rpx;
+  height: 90rpx;
+  border: 4rpx solid #303030;
+  border-radius: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.select-gender{
+  width: 260rpx;
+  height: 90rpx;
+  border-radius: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(131deg,#ffd73b 0%, #fbc346 100%);
+  border-radius: 20rpx;
+  box-shadow: 0px 0px 8rpx 2rpx rgba(247,171,30,0.81);
+}
+
+.left-gender-border{
+  position: absolute;
+  width: 50rpx;
+  height: 50rpx;
+  left: 280rpx;
+  top: -9rpx;
+}
+
+.right-gender-border{
+  position: absolute;
+  width: 50rpx;
+  height: 50rpx;
+  right: 50rpx;
+  top: -9rpx;
+}
+
+.post-content{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-size: 35rpx;
+  align-items: center;
+}
+
+.post-content .like{
+  border: 6rpx solid #303030;
+  border-radius: 20rpx;
+  height: 150rpx;
+  width: 90%;
+  padding: 10rpx 10rpx;
+  font-size: 28rpx;
+  font-family: SF Pro Text, SF Pro Text-Regular;
+  font-weight: 400;
+  text-align: LEFT;
+  color: #808080;
+  line-height: 28rpx;
+}
+
+.post-content .introduce{
+  height: 300rpx;
+  border: 6rpx solid #303030;
+  border-radius: 20rpx;
+  width: 90%;
+  padding: 10rpx 10rpx;
+  margin-top: 20rpx;
+  font-size: 28rpx;
+  font-family: SF Pro Text, SF Pro Text-Regular;
+  font-weight: 400;
+  text-align: LEFT;
+  color: #808080;
+  line-height: 28rpx;
+}
+
+.button-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 80rpx;
+  align-items: center;
+  text-align: center;
+}
+
+.button{
+  width: 93%;
+  background: linear-gradient(110deg,#ffd73b 0%, #fbc346 100%);
+  border-radius: 20rpx;
+  box-shadow: 0px 0px 8rpx 2rpx rgba(247,171,30,0.81); 
+  font-size: 30rpx;
+  font-family: SF Pro Text, SF Pro Text-Regular;
+  font-weight: 400;
+  color: #303030;
+  line-height: 28rpx;
+  padding: 30rpx 0rpx;
+}
+
+.tips{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 80rpx;
+  align-items: center;
+}
+
+.tips .warming{
+  color: darkgray;
+  width: 95%;
+  font-size: 35rpx;
+}
+
+.right-item{
+  font-size: 28rpx;
+  font-family: SF Pro Text, SF Pro Text-Regular;
+  font-weight: 400;
+  text-align: LEFT;
+  color: #808080;
+  line-height: 28rpx;
+  height: 90rpx;
+  border: 4rpx solid #303030;
+  border-radius: 20rpx;
+  width: 90%;
+  padding: 10rpx 10rpx;
+  margin-top: 20rpx;
+}

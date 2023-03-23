@@ -1,0 +1,44 @@
+<view class='post-container container'>
+  <view class='form'>
+    <textarea 
+        maxlength="1024"
+        value='{{copyData}}'
+        class='textarea-content'
+        placeholder="爱情属于勇敢的人儿"    
+        bindinput="getTextContent"/>
+    <view class='image-form'>
+      <upload icon-info="{{icon}}" 
+              qiniu-info="{{qiniu}}"  
+              bind:success="uploadSuccess" 
+              bind:delete="deleteSuccess"
+              bind:error="uploadError"/>
+    </view>  
+  </view>
+
+<view class='middle'>
+  <view class='location'>
+    <input class='like-content' 
+           placeholder="心仪的对象" 
+           bindinput="getName"/>
+  </view>
+  <view class='location'>
+    <input class='like-content' 
+           placeholder="Ta的手机号码（选填）" 
+           bindinput="getPhone"/>
+  </view>
+</view>
+
+  <view class='button-container'>
+    <view bindtap='post' disabled='{{!canPost}}' class="button"><view>发表</view></view>
+  </view>
+
+  <view class="power-by">
+    <view>Codding by 叶子</view>
+    <view>UI by 刨冰加热</view>
+  </view>
+
+</view>
+
+<view class='tips' wx:if="{{showNormal}}">
+    <view class='warming'>短信表白墙：你可以填上自己暗恋对象的手机号码，在你提交信息后系统会往该手机发送一条短信，通知Ta登录小程序查看你对Ta的表白，Ta只需要在表白墙搜索自己的手机号码即可查看表白信息。每天只能发送三条短信表白墙。</view>
+</view>

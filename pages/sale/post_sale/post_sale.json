@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "我要卖舍友",
+  "usingComponents": {
+    "upload": "/components/upload/components/upload/upload"
+  }
+}

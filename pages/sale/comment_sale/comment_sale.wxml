@@ -1,0 +1,170 @@
+ <view class="sale-container" bindtouchmove="hiddenComment">
+
+    <view class='detail-container' wx:if="{{sale}}">
+      <view class='header-container'>
+          <swiper class='image-container' indicator-dots="true" indicator-color="#000000" indicator-active-color="#F7AB1E">
+            <block wx:for="{{sale.attachments}}" wx:key="id">
+              <swiper-item class='image-item'>
+                <image mode='aspectFill' 
+                       src="{{baseImageUrl+item}}" 
+                       bindtap='previewImage'
+                       id="{{baseImageUrl+item}}" 
+                       class="sale-image"/>
+              </swiper-item>
+            </block>
+          </swiper>
+          <view class="genber">
+            <image src="/image/v2/boy.png" wx:if="{{sale.gender==1}}"></image>
+            <image src="/image/v2/girl.png" wx:if="{{sale.gender==2}}"></image>
+          </view>
+      </view>
+      <view class='friend-info-container'>
+        <view class='major'><view class="like-tab">喜欢TA</view><view>{{sale.expectation}}</view></view>
+        <view class='major'><view class="like-introduce">舍友简介</view><view class="">{{sale.introduce}}</view></view>
+      </view>
+
+      <view class="like-icon">
+        <view class="like-icon-content">
+          <image src="/image/v2/sale-like.png" bindtap='follow'></image>
+          <view>{{sale.follow_number<=0?0:sale.follow_number}}</view>
+        </view>
+      </view>
+    </view>
+    
+    <view class='comment-container' wx:if='{{sale}}'>
+      <view class='comment-wall'>
+          <view class='comment-header'>
+            <view class='comment-title'>
+              <view>撩撩舍友</view>
+              <view class="title-border"></view>
+            </view>
+            <view class='zan'
+                  wx:if="{{sale.can_delete}}" 
+                  bindtap='deleteSale'>
+                  <image class="delete-icon" src='/image/v2/index-delete.png'></image>
+            </view>
+            <view class='zan share-user-button' bindtap="openUserInfo" data-id="{{sale.poster.id}}">
+              <image class="comment" src='/image/v2/sale-share.png'></image>
+            </view>
+            <view class='zan coment-icon'>
+              <image  class="comment" 
+                      src='/image/v2/sale-comment.png' 
+                      bindtap='showCommentInput' 
+                      data-objid="{{sale.id}}"
+                      data-refid=""
+                      data-type="2"></image>
+              <view class="comment-num">{{sale.comment_number}}</view>
+            </view>
+          </view>
+      </view>
+
+      <view class='user-comment'>
+        <view class='comment-item' 
+              wx:for="{{sale.comments}}" 
+              wx:key="id">
+          <view class='left'>
+            <view class='user-image' bindtap="openUserInfo" data-id="{{item.commenter.id}}">
+              <image class="avatar-border" src="/image/v2/border.png"></image>
+              <image class="comment-user-avatar" src='{{item.commenter.avatar}}'></image>
+            </view>
+          </view>
+          <view class='right'>
+            <view 
+              class='comment-name right-item'>
+              <view wx:if="{{item.author == 0 && item.commenter.supertube != 1}}" class="comment-nickname" bindtap="openUserInfo" data-id="{{item.commenter.id}}">{{item.commenter.nickname}}</view>
+              <view  wx:if="{{item.author == 1 && item.commenter.supertube != 1}}" class="comment-nickname" bindtap="openUserInfo" data-id="{{item.commenter.id}}">{{item.commenter.nickname}}(楼主)</view>
+              <view wx:if="{{item.commenter.supertube == 1}}" class="admin-nickname" bindtap="openUserInfo" data-id="{{item.commenter.id}}">
+                <view class="supertube">{{item.commenter.nickname}}</view>
+                <image src="/image/v2/index-admin.png"></image>
+              </view>
+              <image class='letter-image'
+                      bindtap='letter'
+                      wx:if="{{sale.can_chat==true && param==true}}"
+                      data-obj="{{item.commenter.id}}"
+                      data-chat="1" 
+                      src='/image/letter.png'></image>
+            </view>
+            <view class='content right-item'>
+              {{item.content}}
+            </view>
+            <view class='create_at right-item'>
+              <view class="create_at_content">
+                <view>{{item.created_at}}</view>
+                <view class="delete-main-comment" 
+                      wx:if="{{item.can_delete}}" 
+                      data-objid="{{item.id}}"
+                      data-type='4'
+                      data-refid="{{item.id}}"
+                      bindtap="deleteMainComment">删除</view>
+              </view>
+              <view class='comment-icon'>
+                <image class="coment-icon-sub"
+                  bindtap='showCommentInput' 
+                  data-objid="{{item.id}}"
+                  src='/image/v2/sale-comment.png'
+                  data-type='4'
+                  data-refid=""></image>
+              </view>
+            </view>
+                <view class='comment-user-wall' 
+                      wx:if='{{item.sub_comments.length > 0}}'>
+                  <view class="qipao"></view>
+                  <view class='comment-user-container' 
+                        wx:for="{{item.sub_comments}}" 
+                        wx:key="id" 
+                        wx:for-item="sub">
+                      <view class='comment-wall-item' 
+                            wx:if="{{!sub.ref_comment}}" 
+                            data-objid="{{item.id}}"
+                            data-type='4'
+                            data-refid="{{sub.id}}"
+                             bindtap="{{sub.can_delete?'deleteComment':'showCommentInput'}}">
+                            <view class='comment-user-container'>
+                              <view class="comment-user inline-item"  wx:if="{{sub.author == 0 && sub.commenter.supertube != 1}}">
+                                {{sub.commenter.nickname}}：
+                              </view>
+                              <view class="comment-user inline-item" wx:if="{{sub.author == 1 && sub.commenter.supertube != 1}}">
+                                {{sub.commenter.nickname}}(楼主)：
+                              </view>
+                              <view class="comment-user inline-item" wx:if="{{sub.commenter.supertube == 1}}">
+                                {{sub.commenter.nickname}}(超管)：
+                              </view>
+                              <view class='inline-item'>{{sub.content}}</view>
+                            </view>
+                        </view>
+
+                      <view class='comment-ref-user-container' 
+                             bindtap="{{sub.can_delete?'deleteComment':'showCommentInput'}}"
+                             data-objid="{{item.id}}"
+                            data-type='4'
+                            data-refid="{{sub.id}}"
+                            wx:if="{{sub.ref_comment}}">
+                          <view class="comment-user inline-item">
+                            {{sub.commenter.nickname}}
+                          </view>
+                          <view class='inline-item'>回复</view>
+                          <view class="comment-user inline-item">
+                            {{sub.ref_comment.refCommenter.nickname}}：
+                          </view>
+                          <view class='inline-item'>{{sub.content}}</view>
+                      </view>
+                  </view>                    
+                </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+  <view class='comment-input-container' wx:if="{{showCommentInput}}">
+    <textarea 
+        maxlength="1024"
+        placeholder="评论" 
+        auto-focus 
+        cursor-spacing="15"
+        fixed="true"
+        auto-height 
+        bindinput='getCommentContent'/>
+    <view class='send-button' bindtap='postComment'><view class="bt">发送</view></view>
+  </view>

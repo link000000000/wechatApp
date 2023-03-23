@@ -1,0 +1,115 @@
+<view class='container'>
+  <view class='image-container' wx-if="{{showSelect}}">
+    <view class='image-left' bindtap='selectLeft'>
+      <view class='image' wx:if="{{!imageLeft}}">
+        <upload icon-info="{{icon}}" 
+              qiniu-info="{{qiniu}}"  
+              class="upload"
+              bind:success="leftUploadSuccess"/>
+      </view>
+    </view>
+    <view class='image-middle' wx:if="{{!imageRight}}">
+      <image src="/image/v2/face-cp.png"></image>
+    </view>
+    <view class='image-right' bindtap='selectRight'>
+      <view class='image' wx:if="{{!imageRight}}">
+        <upload icon-info="{{icon}}" 
+              qiniu-info="{{qiniu}}"
+              class="upload"  
+              bind:success="rightUploadSuccess"/>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class='report-container' wx:if="{{showReport}}">
+  <view class='report'>
+    <view class="report-content">
+      <image class="report-delete-image" src="/image/delete.png" bindtap="hiddenReport"></image>
+      <view class="rp-header">
+        <view class="rp-left">
+          <view class="report-cn">检测报告</view>
+          <view class="report-en">MATCH REPORT</view>
+        </view>
+        <view class="rp-right">
+          <view class="report-code">{{rate}}%</view>
+          <view class="report-same">相似度</view>
+        </view>
+      </view>
+      <view class="up-image-data">
+        <view class="left-image">
+          <image class="left-avatar-border" src="/image/v2/left-border.png"></image>
+          <image class="user-avatar" src="{{postImageLeft}}"></image>
+        </view>
+        <view class="avatar-gap"><image src="/image/v2/face-cp.png"></image></view>
+        <view class="right-image">
+          <image class="right-avatar-border" src="/image/v2/left-border.png"></image>
+          <image class="user-avatar" src="{{postImageRight}}"></image>
+        </view>
+      </view>
+      <view class="rp-type">
+        <view class="rp-result">脸  型：</view>
+        <view class="rp-type-data">{{face}}</view>
+      </view>
+      <view class="rp-type">
+        <view class="rp-result">结  论：</view>
+        <view class="rp-result-content">{{conclusion}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="tip-info" wx:if="{{!showReport}}">
+  <view>请在上方上传你和TA的自拍照</view>
+</view>
+
+<!--<view class='beging' bindtap='showSelect' wx-if="{{showBegin}}">
+  <view class='beging-button'>开始检测</view>
+</view>-->
+
+<!--<view class='beging' bindtap='submit' wx-if="{{showSelect}}">
+  <view class='beging-button'>提交</view>
+</view>-->
+
+<view class="anime-face" wx:if="{{select==2}}">
+  <view class="anime-content">
+    <view class="anime-title">
+      <image class="anime-border" src="/image/v2/anime-title.png"></image>
+    </view>
+    <view class="anime-select-image">
+      <upload icon-info="{{anime_icon}}" 
+              wx:if="{{showSelectAnime}}"
+              qiniu-info="{{qiniu}}"  
+              class="upload"
+              bind:success="getAnimeUrl"/>
+      <view class="anime-image-result" wx:if="{{!showSelectAnime}}">
+        <image class="anime-data-border" src="/image/v2/anime-border.png"></image>
+        <view class="anime-image-data">
+          <image class="anime-image-info" src="{{animeResult}}" mode="aspectFill"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class='switch-container'>
+  <view class="switch-container-content">
+    <view class="switch-left">
+      <view bindtap="selected" data-type="1">
+        <view class='line {{select==1?"selected":""}}'>情侣脸</view>
+      </view>
+      <view bindtap="selected" data-type="2">
+        <view class='line {{select==2?"selected":""}}'>漫画脸</view>
+      </view>
+    </view>
+    <view class="switch-right" wx:if="{{select==2&&showSelectAnime}}"><view class="switch-right-item"  bindtap='getAnime'>开始绘制</view></view>
+    <view class="save-button" wx:if="{{select==2&&!showSelectAnime}}">
+      <view class="save-button-item"  bindtap='getAnimeAgant'>再来一次</view>
+      <view class="save-button-item save-img"  bindtap='downLoadAnime'>保存图片</view>
+    </view>
+    <view class="switch-right" wx:if="{{select==1}}">
+      <view class="switch-right-item" bindtap='showSelect' wx-if="{{showBegin}}">开始检测</view>
+      <view class="switch-right-item" bindtap='submit' wx-if="{{showSelect}}">提交</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,76 @@
+{
+  "pages": [
+    "pages/home/index_2/index_2",
+    "pages/home/post/post",
+    "pages/home/post_detail/post_detail",
+    "pages/home/school/school",
+    "pages/home/topic_comment/topic_comment",
+    "pages/home/topic_detail/topic_detail",
+    "pages/sale/index_2/sale_2",
+    "pages/sale/post_sale/post_sale",
+    "pages/sale/comment_sale/comment_sale",
+    "pages/personal/index_2/personal",
+    "pages/personal/user_info/personal",
+    "pages/personal/message/message",
+    "pages/personal/follow_list/message",
+    "pages/personal/suggestion/suggestion",
+    "pages/personal/friends/friends",
+    "pages/personal/letter/letter",
+    "pages/travel/index/index",
+    "pages/travel/create_travel/create_travel",
+    "pages/compare_face/face"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "西亚斯表白墙",
+    "navigationBarTextStyle": "black"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于当前位置的定位"
+    }
+  },
+  "requiredPrivateInfos": [
+    "chooseLocation"
+  ],
+  "tabBar": {
+    "color": "#515151",
+    "selectedColor": "#fbc346",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/home/index_2/index_2",
+        "iconPath": "image/v2/saylove.png",
+        "selectedIconPath": "image/v2/select-saylove.png",
+        "text": "表白墙"
+      },
+      {
+        "pagePath": "pages/sale/index_2/sale_2",
+        "iconPath": "image/v2/sale.png",
+        "selectedIconPath": "image/v2/select-sale.png",
+        "text": "卖舍友"
+      },
+      {
+        "pagePath": "pages/travel/index/index",
+        "iconPath": "image/v2/run.png",
+        "selectedIconPath": "image/v2/select-run.png",
+        "text": "步数旅行"
+      },
+      {
+        "pagePath": "pages/compare_face/face",
+        "iconPath": "image/v2/fall-in-love.png",
+        "selectedIconPath": "image/v2/select-fall-in-love.png",
+        "text": "情侣脸"
+      },
+      {
+        "pagePath": "pages/personal/index_2/personal",
+        "iconPath": "image/v2/my.png",
+        "selectedIconPath": "image/v2/my.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}
